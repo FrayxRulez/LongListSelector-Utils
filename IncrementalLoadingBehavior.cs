@@ -30,10 +30,10 @@ namespace LongListSelectorUtils
 
             if ((items.Count - index <= 1) && longListSelector.ItemsSource is ISupportIncrementalLoading)
             {
-				var items = longListSelector.ItemsSource as ISupportIncrementalLoading;
-                if (!items.IsLoading && items.HasMoreItems)
+				var source = longListSelector.ItemsSource as ISupportIncrementalLoading;
+                if (!source.IsLoading && source.HasMoreItems)
                 {
-                    await items.LoadMore();
+                    await source.LoadMore();
                 }
             }
         }
